@@ -4,8 +4,8 @@
   sources:
     - ansible.eda.url_check:
         urls:
-          - http://webserver
-        delay: 10
+          - http://web.example.com
+        delay: 20
 
   rules:
     - name: Web site is up
