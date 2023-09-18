@@ -1,0 +1,20 @@
+---
+- name: Site Down
+  hosts: all
+  gather_facts: false
+  become: true
+  tasks:
+
+    - name: Site down
+      ansible.builtin.debug:
+        msg: "Website is down!"
+
+    - name: Replace website
+      ansible.builtin.copy:
+        remote_src: true
+        src: /tmp/index.html
+        dest: /var/www/html/
+        owner: apache
+        group: apache
+        mode: '0644'
+...

@@ -1,2 +1,1 @@
-# eda-examples
-Event-Driven Ansible Examples
+# Event-Driven Ansible Examples
