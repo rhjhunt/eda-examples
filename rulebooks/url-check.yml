@@ -4,19 +4,25 @@
   sources:
     - ansible.eda.url_check:
         urls:
-          - "{{ web_url }}"
+          - http://web.example.com
         delay: 20
 
   rules:
     - name: Web site is up
       condition: event.url_check.status == "up"
       action:
-        run_playbook:
-          name: status_up.yml
+        run_job_template:
+          name: Status
+          organization: Default
+          job_args:
+            limit: "{{ event.meta.hosts }}"
 
     - name: Web site is down
       condition: event.url_check.status == "down"
       action:
-        run_playbook:
-          name: fix_web.yml
+        run_job_template:
+          name: Fix
+          organization: Default
+          job_args:
+            limit: "{{ event.meta.hosts }}"
 ...
